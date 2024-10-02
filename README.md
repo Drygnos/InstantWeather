@@ -1,6 +1,6 @@
 <h1>Exercice de JavaScript sur les API :</h1>
 
-Site Web : https://nixhammer34.github.io/InstantWeather/
+Site Web : https://drygnos.github.io/InstantWeather/
 
 <h2>API utilisées :</h2>
 
