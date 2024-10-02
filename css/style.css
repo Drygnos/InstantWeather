@@ -19,11 +19,13 @@ header{
     flex-direction: column;
     align-items: center;
     
+    margin: 10px;
     padding: 25px;
     width: 50%;
 
-    color: white;
     background-color: rgb(0, 112, 163);
+    color: white;
+    text-align: center;
 
     border: solid;
     border-color: black;
@@ -32,6 +34,32 @@ header{
 
 header p{
     font-size: 1.5rem;
+}
+
+.contenu{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    margin: 25px;
+    padding: 25px;
+    width: 50%;
+
+    border: solid;
+    border-color: black;
+    border-radius: 1em;
+}
+
+.contenu input{
+    padding: 2px 7px;
+    margin: 10px 0px;
+
+    text-align: center;
+
+    border: solid;
+    border-color: black;
+    border-radius: 1rem;
 }
 
 footer{
