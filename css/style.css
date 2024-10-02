@@ -78,3 +78,25 @@ footer{
     background-color: black;
     color: white;
 }
+
+.check{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: black;
+}
+
+.rep {
+    background-color: #e0f7fa;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #0097a7;
+    border-radius: 5px;
+  }
+
+.co:hover{
+    color: aqua;
+    -webkit-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+}
