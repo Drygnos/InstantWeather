@@ -44,6 +44,7 @@ async function fetchMeteoParCommuneParJour(codeInsee) {
 function displayCommunes(communes) {
     const repDiv = document.getElementById('rep');
     repDiv.innerHTML = '';
+    let count = 0;
 
     communes.forEach(commune => {
         const instanceComm = new Commune(commune.nom, commune.code);
@@ -52,12 +53,21 @@ function displayCommunes(communes) {
 
         communeDiv.textContent = commune.nom; 
         communeDiv.classList.add('co');  
+        communeDiv.style.setProperty('--i', count);
         communeDiv.onclick = function(){
             fetchMeteoParCommuneParJour(instanceComm.codeINSEE);
         }
 
         repDiv.appendChild(communeDiv);
+        count++;
     });
+
+    setTimeout(() => {
+        const allCommuneDivs = repDiv.querySelectorAll('.co');
+        allCommuneDivs.forEach(communeDiv => {
+            communeDiv.classList.add('visible');
+        });
+    }, 10);
 }
 
 function displayPrev(previsions){

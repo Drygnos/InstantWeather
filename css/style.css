@@ -3,14 +3,47 @@ body{
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    position: relative;
 
-    background-image: url(https://wallpapercave.com/wp/wp10695396.jpg);
-    background-size: 100% 100%;
     
+    background-color: rgb(23, 23, 23);
+    padding: 0;
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    max-height: 100vh;
-    overflow: hidden;
+    color: white;
+    overflow-x: hidden;
+    z-index: -1;
     
+}
+
+
+input {
+    background-color: rgb(23, 23, 23);
+    border: none; 
+    color: white; 
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 200px;
+    font-size: 16px;
+
+
+    box-shadow: 
+        5px 5px 10px rgba(0, 0, 0, 0.5),  
+        -5px -5px 10px rgba(255, 255, 255, 0.1); 
+    transition: box-shadow 0.3s ease;
+}
+
+input:hover {
+    box-shadow: 
+        8px 8px 15px rgba(0, 0, 0, 0.6), 
+        -8px -8px 15px rgba(255, 255, 255, 0.15);
+}
+
+input:focus {
+    outline: none; 
+    box-shadow: 
+        2px 2px 5px rgba(0, 0, 0, 0.7), 
+        -2px -2px 5px rgba(255, 255, 255, 0.2);
 }
 
 body h1{
@@ -19,12 +52,14 @@ body h1{
 }
 
 header{
+    background-image: url(https://wallpapercave.com/wp/wp10695396.jpg);
+    background-size: 100% 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     text-align: center;
-
+    width: 100%;
     height: 100vh;
     color: white;
     -webkit-user-select: none;
@@ -41,6 +76,7 @@ header p{
 }
 
 .contenu{
+    z-index: -1;
     position: absolute;
     top:0;
 
@@ -49,28 +85,11 @@ header p{
     flex-direction: column;
     align-items: center;
 
-    margin: 25px;
-    padding: 25px;
-    width: 50%;
-
-    border: solid;
-    border-color: black;
-    border-radius: 1em;
     opacity: 0;
     transition: opacity 1s ease-in-out;
 
 }
 
-.contenu input{
-    padding: 2px 7px;
-    margin: 10px 0px;
-
-    text-align: center;
-
-    border: solid;
-    border-color: black;
-    border-radius: 1rem;
-}
 
 footer{
     display: none;
@@ -96,13 +115,7 @@ footer{
     background-color: black;
 }
 
-.rep {
-    background-color: #e0f7fa;
-    padding: 10px;
-    margin: 5px 0;
-    border: 1px solid #0097a7;
-    border-radius: 5px;
-  }
+
 
 .co:hover{
     color: aqua;
@@ -115,12 +128,34 @@ footer{
     opacity: 0;
     transform: scale(1.2);
     pointer-events: none;
+
 }
 
 .show{
     opacity: 1;
 }
 
-.changeBG{
-    background-color: rgb(23 23 23);
+.sidetside{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidetside box-icon{
+    width: 50px;
+    height: 50px;
+}
+
+.co {
+    padding: 10px;
+    display: block;
+    text-align: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition-delay: calc(0.1s * var(--i));
+}
+
+.co.visible {
+    transform: translateY(0);
+    opacity: 1;
 }
