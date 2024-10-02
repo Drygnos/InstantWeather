@@ -92,3 +92,16 @@ check.addEventListener('click', ()=>{
     fetchCommunesParCodePostal(formCP.value);
 
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    const homeP = document.getElementById('homeP');
+    const contenu = document.getElementById('contenu');
+    homeP.addEventListener('click', function () {
+        homeP.classList.add('hide');
+        setTimeout(function () {
+            contenu.classList.add('show');
+        }, 1000);
+    });
+});
