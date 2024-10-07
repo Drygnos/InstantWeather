@@ -6,17 +6,28 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="icon" href="/images/favicon.png">
         <title>Instant Weather</title>
+        
+
     </head>
-    <body>
-        <header>
-            <h1>INSTANT WEATHER</h1>
+    <body id="body">
+        <header id="homeP">
             <p>Votre météo en un clic</p>
+            <h1>INSTANT WEATHER</h1>
             <p>Choisissez votre commune et consultez les prévisions du jour</p>
         </header>
 
-        <div class="contenu">
-            <p>Sélectionner le code postal</p>
-            <input type="text" id="code_postal" name="code_postal"/>
+        <div class="contenu" id="contenu">
+            <div class="topPos">
+                <p>Entrez votre code postal</p>
+                <div class="sidetside">
+                    <input type="text" id="code_postal" name="code_postal"/>
+                    <box-icon name='right-arrow-alt' color='#ffffff' id="check"></box-icon>
+                </div>
+                <!-- <div class="check" id="check">  -->
+                    
+                <!-- </div> -->
+                <div id="rep" class="rep"></div>
+            </div>
         </div>
 
         <footer>
@@ -25,5 +36,6 @@
         </footer>
 
         <script src="js/script.js"></script>
+        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     </body>
 </html>

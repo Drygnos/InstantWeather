@@ -3,33 +3,72 @@ body{
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    position: relative;
 
-    background-color: rgb(218, 248, 255);
     
+    background-color: rgb(23, 23, 23);
+    padding: 0;
+    margin: 0;
     font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    overflow-x: hidden;
+    z-index: -1;
+    
+}
+
+
+input {
+    background-color: rgb(23, 23, 23);
+    border: none; 
+    color: white; 
+    padding: 10px 20px;
+    border-radius: 10px;
+    width: 200px;
+    font-size: 16px;
+
+
+    box-shadow: 
+        5px 5px 10px rgba(0, 0, 0, 0.5),  
+        -5px -5px 10px rgba(255, 255, 255, 0.1); 
+    transition: box-shadow 0.3s ease;
+}
+
+input:hover {
+    box-shadow: 
+        8px 8px 15px rgba(0, 0, 0, 0.6), 
+        -8px -8px 15px rgba(255, 255, 255, 0.15);
+}
+
+input:focus {
+    outline: none; 
+    box-shadow: 
+        2px 2px 5px rgba(0, 0, 0, 0.7), 
+        -2px -2px 5px rgba(255, 255, 255, 0.2);
 }
 
 body h1{
-    font-size: 6em;
+    font-size: 8em;
+    line-height: 0;
 }
 
 header{
+    background-image: url(https://wallpapercave.com/wp/wp10695396.jpg);
+    background-size: 100% 100%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    
-    margin: 10px;
-    padding: 25px;
-    width: 50%;
-
-    background-color: rgb(0, 112, 163);
-    color: white;
     text-align: center;
+    width: 100%;
+    height: 100vh;
+    color: white;
+    -webkit-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
 
-    border: solid;
-    border-color: black;
-    border-radius: 1em;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+    opacity: 1;
+    z-index: 2;
 }
 
 header p{
@@ -37,33 +76,23 @@ header p{
 }
 
 .contenu{
+    z-index: -1;
+    position: absolute;
+    top:0;
+
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
 
-    margin: 25px;
-    padding: 25px;
-    width: 50%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
 
-    border: solid;
-    border-color: black;
-    border-radius: 1em;
 }
 
-.contenu input{
-    padding: 2px 7px;
-    margin: 10px 0px;
-
-    text-align: center;
-
-    border: solid;
-    border-color: black;
-    border-radius: 1rem;
-}
 
 footer{
-    display: flex;
+    display: none;
     justify-content: center;
     flex-direction: column;
     align-items: center;
@@ -77,4 +106,56 @@ footer{
 
     background-color: black;
     color: white;
+}
+
+.check{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    background-color: black;
+}
+
+
+
+.co:hover{
+    color: aqua;
+    -webkit-user-select: none;
+    -ms-user-select: none; 
+    user-select: none;
+}
+
+.hide{
+    opacity: 0;
+    transform: scale(1.2);
+    pointer-events: none;
+
+}
+
+.show{
+    opacity: 1;
+}
+
+.sidetside{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sidetside box-icon{
+    width: 50px;
+    height: 50px;
+}
+
+.co {
+    padding: 10px;
+    display: block;
+    text-align: center;
+    transform: translateY(-50px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transition-delay: calc(0.1s * var(--i));
+}
+
+.co.visible {
+    transform: translateY(0);
+    opacity: 1;
 }
