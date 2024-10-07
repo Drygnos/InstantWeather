@@ -28,7 +28,7 @@ async function fetchMeteoParCommuneParJour(codeInsee) {
     console.log("test");
     try{
         let reponse = await fetch(
-            'https://api.meteo-concept.com/api/forecast/daily/0?token=e5087496addc1cf806f9fb5ca548324a8ec1fe8a3ba5edb4db213ca0f69e8fcd&insee=' + codeInsee
+            'https://api.meteo-concept.com/api/forecast/daily?token=e5087496addc1cf806f9fb5ca548324a8ec1fe8a3ba5edb4db213ca0f69e8fcd&insee=' + codeInsee
         );
         let previsions = await reponse.json();
         console.table(previsions);
@@ -79,19 +79,19 @@ function displayPrev(previsions){
     repDiv.appendChild(previsionDiv);
 
     const previsionTMax = document.createElement('div');
-    previsionTMax.textContent = previsions.forecast.tmax;
+    previsionTMax.textContent = previsions.forecast[0].tmax;
     repDiv.appendChild(previsionTMax);
 
     const previsionTMin = document.createElement('div');
-    previsionTMin.textContent = previsions.forecast.tmin;
+    previsionTMin.textContent = previsions.forecast[0].tmin;
     repDiv.appendChild(previsionTMin);
 
     const previsionPPluie = document.createElement('div');
-    previsionPPluie.textContent = previsions.forecast.probarain;
+    previsionPPluie.textContent = previsions.forecast[0].probarain;
     repDiv.appendChild(previsionPPluie);
 
     const previsionSH = document.createElement('div');
-    previsionSH.textContent = previsions.forecast.sun_hours;
+    previsionSH.textContent = previsions.forecast[0].sun_hours;
     repDiv.appendChild(previsionSH);
 
     
