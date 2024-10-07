@@ -55,6 +55,7 @@ async function fetchMeteoParCommuneParJour(codeInsee) {
 
 function displayCommunes(communes) {
     const repDiv = document.getElementById('rep');
+    repDiv.classList.remove('rep')
     repDiv.innerHTML = '';
     let count = 0;
 
@@ -84,63 +85,83 @@ function displayCommunes(communes) {
 
 const slider = document.getElementById('slider');
 
+function createImage(src, alt, title) {
+    let img = document.createElement('img');
+    img.src = src;
+    if ( alt != null ) img.alt = alt;
+    if ( title != null ) img.title = title;
+    return img;
+}
+
+function changeBG(div, weather){
+    if(weather != 0){
+        div.appendChild(createImage("../images/nuages.jpg", "meteo", "meteo"))
+    }
+    if (weather >= 1 && weather <= 5){
+        div.classList.add('nuage')
+    }
+}
+
 function displayPrev(previsions){
     
     const repDiv = document.getElementById('rep');
+    repDiv.classList.add('rep')
     repDiv.innerHTML = '';
     for(let i = 0; i < slider.value; i++){
-
+        const cardDiv = document.createElement('div')
+        cardDiv.classList.add('cards')
+        changeBG(cardDiv, previsions.forecast[i].weather);
         const previsionDiv = document.createElement('div');
         previsionDiv.textContent = previsions.city.name;
-        repDiv.appendChild(previsionDiv);
+        cardDiv.appendChild(previsionDiv);
 
         const previsionDate = document.createElement('div');
         previsionDate.textContent = previsions.forecast[i].datetime.substr(8, 2) + ("/");
         previsionDate.textContent += previsions.forecast[i].datetime.substr(5, 2) + ("/");
         previsionDate.textContent += previsions.forecast[i].datetime.substr(0, 4);
-        repDiv.appendChild(previsionDate);
+        cardDiv.appendChild(previsionDate);
 
         const previsionTMin = document.createElement('div');
         previsionTMin.textContent = "Température minimale : " + previsions.forecast[i].tmin + "°C";
-        repDiv.appendChild(previsionTMin);
+        cardDiv.appendChild(previsionTMin);
 
         const previsionTMax = document.createElement('div');
         previsionTMax.textContent = "Température maximale : " + previsions.forecast[i].tmax + "°C";
-        repDiv.appendChild(previsionTMax);
+        cardDiv.appendChild(previsionTMax);
 
         const previsionPPluie = document.createElement('div');
         previsionPPluie.textContent = "Probabilité de pluie : " + previsions.forecast[i].probarain + "%";
-        repDiv.appendChild(previsionPPluie);
+        cardDiv.appendChild(previsionPPluie);
 
         const previsionSH = document.createElement('div');
         previsionSH.textContent = "Temps d'ensoleillement : " + previsions.forecast[i].sun_hours + "h";
-        repDiv.appendChild(previsionSH);
+        cardDiv.appendChild(previsionSH);
         if(checklat.checked){
             const previsionLat = document.createElement('div');
             previsionLat.textContent = "Latitude : " +previsions.city.latitude;
-            repDiv.appendChild(previsionLat);
+            cardDiv.appendChild(previsionLat);
         }
         if(checklong.checked){
             const previsionlong = document.createElement('div');
             previsionlong.textContent = "Longitude : " +previsions.city.longitude;
-            repDiv.appendChild(previsionlong);
+            cardDiv.appendChild(previsionlong);
         }
         if(checkpluie.checked){
             const previsionpluie = document.createElement('div');
             previsionpluie.textContent = "Pluie tombée : " +previsions.forecast[i].rr10 + " mm";
-            repDiv.appendChild(previsionpluie);
+            cardDiv.appendChild(previsionpluie);
         }
         if(checkvent.checked){
             const previsionvent = document.createElement('div');
             previsionvent.textContent = "Moyenne de vent : " +previsions.forecast[i].wind10m + " km/h";
-            repDiv.appendChild(previsionvent);
+            cardDiv.appendChild(previsionvent);
         }
         if(checkdirvent.checked){
             const previsiondirvent = document.createElement('div');
             previsiondirvent.textContent = "Direction du vent : " +previsions.forecast[i].dirwind10m + "°";
-            repDiv.appendChild(previsiondirvent);
+            cardDiv.appendChild(previsiondirvent);
         }
-        
+        repDiv.appendChild(cardDiv)
     }
 
 }

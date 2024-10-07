@@ -159,3 +159,29 @@ footer{
     transform: translateY(0);
     opacity: 1;
 }
+
+.rep{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap ;
+    justify-content: center;
+}
+
+.cards{
+    color: blue;
+    /* background-image: url(https://img-31.ccm2.net/JgViH6yxAeWw8arbb4P5EwjFXzw=/1240x/smart/b490b7fb4be14ba2a1f8ff0c1a2a9267/ccmcms-hugo/10608091.jpg); */
+    background-size: cover;
+} 
+.cards img{
+    width: 230px;
+    float: left;
+    height: 150px;
+    object-fit: cover;
+}
+
+.topPos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
