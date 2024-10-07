@@ -1,6 +1,17 @@
 let formCP = document.getElementById("code_postal");
 let check = document.getElementById("check");
 
+let checklist = []
+
+let checklat = document.getElementById('lat')
+let checklong = document.getElementById('long')
+let checkpluie = document.getElementById('pluie')
+let checkvent = document.getElementById('vent')
+let checkdirvent = document.getElementById('dirvent')
+
+
+let lastPrev = null;
+
 class Commune {
     constructor(nom, codeINSEE) {
         this.nom = nom;
@@ -33,6 +44,7 @@ async function fetchMeteoParCommuneParJour(codeInsee) {
         let previsions = await reponse.json();
         console.table(previsions);
         displayPrev(previsions);
+        lastPrev = previsions;
         return previsions;
     }
     catch(erreur){
@@ -70,38 +82,82 @@ function displayCommunes(communes) {
     }, 10);
 }
 
+const slider = document.getElementById('slider');
+
 function displayPrev(previsions){
+    
     const repDiv = document.getElementById('rep');
     repDiv.innerHTML = '';
+    for(let i = 0; i < slider.value; i++){
 
-    const previsionDiv = document.createElement('div');
-    previsionDiv.textContent = previsions.city.name;
-    repDiv.appendChild(previsionDiv);
+        const previsionDiv = document.createElement('div');
+        previsionDiv.textContent = previsions.city.name;
+        repDiv.appendChild(previsionDiv);
 
-    const previsionTMax = document.createElement('div');
-    previsionTMax.textContent = previsions.forecast[0].tmax;
-    repDiv.appendChild(previsionTMax);
+        const previsionDate = document.createElement('div');
+        previsionDate.textContent = previsions.forecast[i].datetime.substr(8, 2) + ("/");
+        previsionDate.textContent += previsions.forecast[i].datetime.substr(5, 2) + ("/");
+        previsionDate.textContent += previsions.forecast[i].datetime.substr(0, 4);
+        repDiv.appendChild(previsionDate);
 
-    const previsionTMin = document.createElement('div');
-    previsionTMin.textContent = previsions.forecast[0].tmin;
-    repDiv.appendChild(previsionTMin);
+        const previsionTMin = document.createElement('div');
+        previsionTMin.textContent = "Température minimale : " + previsions.forecast[i].tmin + "°C";
+        repDiv.appendChild(previsionTMin);
 
-    const previsionPPluie = document.createElement('div');
-    previsionPPluie.textContent = previsions.forecast[0].probarain;
-    repDiv.appendChild(previsionPPluie);
+        const previsionTMax = document.createElement('div');
+        previsionTMax.textContent = "Température maximale : " + previsions.forecast[i].tmax + "°C";
+        repDiv.appendChild(previsionTMax);
 
-    const previsionSH = document.createElement('div');
-    previsionSH.textContent = previsions.forecast[0].sun_hours;
-    repDiv.appendChild(previsionSH);
+        const previsionPPluie = document.createElement('div');
+        previsionPPluie.textContent = "Probabilité de pluie : " + previsions.forecast[i].probarain + "%";
+        repDiv.appendChild(previsionPPluie);
 
-    
+        const previsionSH = document.createElement('div');
+        previsionSH.textContent = "Temps d'ensoleillement : " + previsions.forecast[i].sun_hours + "h";
+        repDiv.appendChild(previsionSH);
+        if(checklat.checked){
+            const previsionLat = document.createElement('div');
+            previsionLat.textContent = "Latitude : " +previsions.city.latitude;
+            repDiv.appendChild(previsionLat);
+        }
+        if(checklong.checked){
+            const previsionlong = document.createElement('div');
+            previsionlong.textContent = "Longitude : " +previsions.city.longitude;
+            repDiv.appendChild(previsionlong);
+        }
+        if(checkpluie.checked){
+            const previsionpluie = document.createElement('div');
+            previsionpluie.textContent = "Pluie tombée : " +previsions.forecast[i].rr10 + " mm";
+            repDiv.appendChild(previsionpluie);
+        }
+        if(checkvent.checked){
+            const previsionvent = document.createElement('div');
+            previsionvent.textContent = "Moyenne de vent : " +previsions.forecast[i].wind10m + " km/h";
+            repDiv.appendChild(previsionvent);
+        }
+        if(checkdirvent.checked){
+            const previsiondirvent = document.createElement('div');
+            previsiondirvent.textContent = "Direction du vent : " +previsions.forecast[i].dirwind10m + "°";
+            repDiv.appendChild(previsiondirvent);
+        }
+        
+    }
 
 }
+
+
 
 check.addEventListener('click', ()=>{
     fetchCommunesParCodePostal(formCP.value);
 
 });
+const checks = document.getElementById('checks')
+
+checks.addEventListener('click', ()=>{
+    if(lastPrev != null){
+        displayPrev(lastPrev);
+    }
+})
 
 
 

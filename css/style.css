@@ -17,7 +17,7 @@ body{
 }
 
 
-input {
+.cp {
     background-color: rgb(23, 23, 23);
     border: none; 
     color: white; 
