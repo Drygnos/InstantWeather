@@ -1,17 +1,17 @@
 let formCP = document.getElementById("code_postal");
-let check = document.getElementById("check");
-
 let checklist = []
 
+// Éléments pour les options de météo (checkboxs)
 let checklat = document.getElementById('lat')
 let checklong = document.getElementById('long')
 let checkpluie = document.getElementById('pluie')
 let checkvent = document.getElementById('vent')
 let checkdirvent = document.getElementById('dirvent')
 
-
+// Variable pour stocker les dernières prévisions météo
 let lastPrev = null;
 
+// Classe pour représenter une commune
 class Commune {
     constructor(nom, codeINSEE) {
         this.nom = nom;
@@ -19,7 +19,7 @@ class Commune {
     }
 }
 
-
+// Fonction asynchrone pour récupérer les communes par code postal
 async function fetchCommunesParCodePostal(codePostal) {
     try {
         let reponse = await fetch(
@@ -34,7 +34,7 @@ async function fetchCommunesParCodePostal(codePostal) {
         throw erreur;
     }
 }
-
+// Fonction asynchrone pour récupérer la météo
 async function fetchMeteoParCommuneParJour(codeInsee) {
     console.log("test");
     try{
@@ -53,6 +53,7 @@ async function fetchMeteoParCommuneParJour(codeInsee) {
     }
 }
 
+// Fonction pour afficher les communes
 function displayCommunes(communes) {
     const repDiv = document.getElementById('rep');
     repDiv.classList.remove('rep')
@@ -83,8 +84,10 @@ function displayCommunes(communes) {
     }, 10);
 }
 
+// Récupère l'élément du slider
 const slider = document.getElementById('slider');
 
+// Fonction pour créer une image
 function createImage(src, alt, title) {
     let img = document.createElement('img');
     img.src = src;
@@ -93,6 +96,7 @@ function createImage(src, alt, title) {
     return img;
 }
 
+// Fonction pour changer l'image en fonction de la météo
 function changeBG(div, weather){
     if(weather == 0){
         div.appendChild(createImage("../images/soleil.jpg", "meteo", "meteo"))
@@ -127,6 +131,7 @@ function changeBG(div, weather){
     }
 }
 
+// Fonction pour afficher les prévisions
 function displayPrev(previsions){
     
     const repDiv = document.getElementById('rep');
@@ -199,24 +204,20 @@ function displayPrev(previsions){
 
 }
 
+// Écouteur d'événement pour le champ de saisie du code postal
 formCP.addEventListener('input', async ()=>{
     fetchCommunesParCodePostal(formCP.value);
 })
 
-// check.addEventListener('click', ()=>{
-//     fetchCommunesParCodePostal(formCP.value);
-
-// });
+// Écouteur d'événement pour la vérification des options
 const checks = document.getElementById('checks')
-
 checks.addEventListener('click', ()=>{
     if(lastPrev != null){
         displayPrev(lastPrev);
     }
 })
 
-
-
+// Écouteur d'événement pour le chargement du DOM
 document.addEventListener('DOMContentLoaded', function () {
     const homeP = document.getElementById('homeP');
     const contenu = document.getElementById('contenu');
@@ -228,6 +229,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
+// Fonction pour mettre à jour le texte du slider
 function rangeSlide(value) {
     document.getElementById('rangeValue').textContent = "Nombre de jours: " + value ;
     if(lastPrev != null){
