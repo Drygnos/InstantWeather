@@ -94,11 +94,36 @@ function createImage(src, alt, title) {
 }
 
 function changeBG(div, weather){
-    if(weather != 0){
+    if(weather == 0){
+        div.appendChild(createImage("../images/soleil.jpg", "meteo", "meteo"))
+    }
+
+    else if (weather >= 1 && weather <= 5){
         div.appendChild(createImage("../images/nuages.jpg", "meteo", "meteo"))
     }
-    if (weather >= 1 && weather <= 5){
-        div.classList.add('nuage')
+
+    else if (weather >= 6 && weather <= 7){
+        div.appendChild(createImage("../images/brouillard.jpg", "meteo", "meteo"))
+    }
+
+    else if ((weather >= 10 && weather <= 16) || (weather >= 30 && weather <= 32) || (weather >= 210 && weather <= 212)){
+        div.appendChild(createImage("../images/pluie.jpg", "meteo", "meteo"))
+    }
+
+    else if ((weather >= 20 && weather <= 22) || (weather >= 220 && weather <= 235)){
+        div.appendChild(createImage("../images/neige.jpeg", "meteo", "meteo"))
+    }
+
+    else if (weather >= 100 && weather <= 142){
+        div.appendChild(createImage("../images/orage.jpg", "meteo", "meteo"))
+    }
+
+    else if ((weather >= 40 && weather <= 78)){
+        div.appendChild(createImage("../images/averse.jpeg", "meteo", "meteo"))
+    }
+
+    else{
+        div.appendChild(createImage("../images/soleil.jpg", "meteo", "meteo"))
     }
 }
 
