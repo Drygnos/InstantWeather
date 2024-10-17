@@ -154,43 +154,43 @@ function displayPrev(previsions){
         const previsionsTotal = document.createElement('div');
         previsionsTotal.classList.add('previsions')
         const previsionTMin = document.createElement('div');
-        previsionTMin.textContent = "Min : " + previsions.forecast[i].tmin + "°C";
+        previsionTMin.textContent = "Min " + previsions.forecast[i].tmin + "°C";
         previsionsTotal.appendChild(previsionTMin);
 
         const previsionTMax = document.createElement('div');
-        previsionTMax.textContent = "Max : " + previsions.forecast[i].tmax + "°C";
+        previsionTMax.textContent = "Max " + previsions.forecast[i].tmax + "°C";
         previsionsTotal.appendChild(previsionTMax);
 
         const previsionPPluie = document.createElement('div');
-        previsionPPluie.textContent = "Précipitations : " + previsions.forecast[i].probarain + "%";
+        previsionPPluie.textContent = "Précipitations " + previsions.forecast[i].probarain + "%";
         previsionsTotal.appendChild(previsionPPluie);
 
         const previsionSH = document.createElement('div');
-        previsionSH.textContent = "Ensoleillement : " + previsions.forecast[i].sun_hours + "h";
+        previsionSH.textContent = "Ensoleillement " + previsions.forecast[i].sun_hours + "h";
         previsionsTotal.appendChild(previsionSH);
         if(checklat.checked){
             const previsionLat = document.createElement('div');
-            previsionLat.textContent = "Latitude : " +previsions.city.latitude;
+            previsionLat.textContent = "Latitude " +previsions.city.latitude;
             previsionsTotal.appendChild(previsionLat);
         }
         if(checklong.checked){
             const previsionlong = document.createElement('div');
-            previsionlong.textContent = "Longitude : " +previsions.city.longitude;
+            previsionlong.textContent = "Longitude " +previsions.city.longitude;
             previsionsTotal.appendChild(previsionlong);
         }
         if(checkpluie.checked){
             const previsionpluie = document.createElement('div');
-            previsionpluie.textContent = "Pluie tombée : " +previsions.forecast[i].rr10 + " mm";
+            previsionpluie.textContent = "Pluie tombée " +previsions.forecast[i].rr10 + " mm";
             previsionsTotal.appendChild(previsionpluie);
         }
         if(checkvent.checked){
             const previsionvent = document.createElement('div');
-            previsionvent.textContent = "Moyenne vent : " +previsions.forecast[i].wind10m + " km/h";
+            previsionvent.textContent = "Moyenne vent " +previsions.forecast[i].wind10m + " km/h";
             previsionsTotal.appendChild(previsionvent);
         }
         if(checkdirvent.checked){
             const previsiondirvent = document.createElement('div');
-            previsiondirvent.textContent = "Direction du vent : " +previsions.forecast[i].dirwind10m + "°";
+            previsiondirvent.textContent = "Direction du vent " +previsions.forecast[i].dirwind10m + "°";
             previsionsTotal.appendChild(previsiondirvent);
         }
         cardDiv.appendChild(previsionsTotal)
