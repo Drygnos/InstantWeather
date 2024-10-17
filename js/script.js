@@ -219,3 +219,11 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 1000);
     });
 });
+
+function rangeSlide(value) {
+    document.getElementById('rangeValue').textContent = "Nombre de jours: " + value ;
+    if(lastPrev != null){
+        displayPrev(lastPrev);
+    }
+}
+

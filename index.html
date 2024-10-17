@@ -19,30 +19,61 @@
         <div class="contenu" id="contenu">
             <div class="topPos">
                 <div class="sidetside">
-                    <input type="text" id="code_postal" placeholder="Entrez un code postal..." name="code_postal" class="cp">
-                </div>
-
-                
-                <!-- <div class="check" id="check">  -->
-                    
-                <!-- </div> -->
-                <div id="checks">
-                    <div class="test">   
-
-                    <label class="switch">
-                    <input type="range" min="1" max="7" value="1" name="slider" id="slider">
-                    <span class="slider"></span>
-                    </label>
+                    <div class="sliderDiv">
+                        <input type="text" id="code_postal" placeholder="Entrez un code postal..." name="code_postal" class="cp">
+                        <input class="range" type="range" min="1" max="7" value="1" name="slider" id="slider" onChange="rangeSlide(this.value)" onmousemove="rangeSlide(this.value)">
+                        <span id="rangeValue" class="rangeValue">0</span>
                     </div>
+                    <div id="checks">
+                        <article>
+                            <input type="checkbox" name="latitude" id="lat">
+                            <div>
+                              <span>
+                                latitude
+                              </span>
+                            </div>
+                        </article>
+                        <article>
+                            <input type="checkbox" name="longitude" id="long">
+                            <div>
+                              <span>
+                                Longitude
+                              </span>
+                            </div>
+                        </article>
+                        <article>
+                            <input type="checkbox" name="pluie" id="pluie">
+                            <div>
+                              <span>
+                                latitude
+                              </span>
+                            </div>
+                        </article>
+                        <article>
+                            <input type="checkbox" name="vent" id="vent">
+                            <div>
+                              <span>
+                                latitude
+                              </span>
+                            </div>
+                        </article>
+                        <article>
+                            <input type="checkbox" name="dirvent" id="dirvent">
+                            <div>
+                              <span>
+                                latitude
+                              </span>
+                            </div>
+                        </article>
 
-                    <input type="checkbox" name="latitude" id="lat">
-                    <input type="checkbox" name="longitude" id="long">
-                    <input type="checkbox" name="pluie" id="pluie">
-                    <input type="checkbox" name="vent" id="vent">
-                    <input type="checkbox" name="dirvent" id="dirvent">
+                        
+                        
+                        
+                       
+                    </div>
                 </div>
+
                 <div id="rep" class="rep"></div>
-            </div>
         </div>
 
         <footer>
