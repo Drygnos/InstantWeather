@@ -75,6 +75,18 @@ header p{
     font-size: 1.5rem;
 }
 
+@media(max-width : 1250px){
+    header h1{
+        font-size: 5rem;
+    }
+}
+
+@media(max-width : 850px){
+    header h1{
+        font-size: 2.5rem;
+    }
+}
+
 .contenu{
     z-index: -1;
     position: absolute;
@@ -180,8 +192,13 @@ footer{
 }
 
 .topPos{
+    margin-top: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+
+
+
+

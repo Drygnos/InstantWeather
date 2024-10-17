@@ -166,12 +166,14 @@ function displayPrev(previsions){
 
 }
 
-
-
-check.addEventListener('click', ()=>{
+formCP.addEventListener('input', async ()=>{
     fetchCommunesParCodePostal(formCP.value);
+})
 
-});
+// check.addEventListener('click', ()=>{
+//     fetchCommunesParCodePostal(formCP.value);
+
+// });
 const checks = document.getElementById('checks')
 
 checks.addEventListener('click', ()=>{
